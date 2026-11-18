@@ -1,0 +1,117 @@
+name: Codex Long-Term Routing
+desc: Persistent routing for AI, video, finance, Amazon, and mobile games.
+
+proxy-groups:
+  - name: CODEX-AI
+    type: select
+    proxies:
+      - "🇺🇸美国凤凰城专线-0.1倍率"
+      - "🇺🇸美国4号-0.1倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
+      - "🇺🇸美国ai解锁"
+
+  - name: CODEX-YOUTUBE
+    type: url-test
+    proxies:
+      - "🇯🇵日本专线-0.1倍率"
+      - "🇯🇵日本专线2-0.1倍率"
+      - "🇯🇵日本专线3-0.1倍率"
+      - "🇯🇵日本专线4-0.1倍率"
+      - "🇯🇵日本专线5-0.1倍率"
+      - "🇯🇵日本专线6-0.1倍率"
+      - "🇺🇸美国凤凰城专线-0.1倍率"
+      - "🇺🇸美国凤凰城专线2-0.1倍率"
+      - "🇺🇸美国ai解锁-0.1倍率"
+    url: https://www.youtube.com/generate_204
+    interval: 300
+    tolerance: 80
+
+  - name: CODEX-FIN-HK
+    type: select
+    proxies:
+      - "🇭🇰香港HKBN"
+      - "🇭🇰香港HKBN2"
+      - "🇭🇰香港家宽专线"
+
+  - name: CODEX-FIN-SG
+    type: select
+    proxies:
+      - "🇸🇬新加坡专线"
+      - "🇸🇬新加坡专线2"
+      - "🇸🇬新加坡专线3"
+
+  - name: CODEX-FIN-US
+    type: select
+    proxies:
+      - "🇺🇸美国凤凰城专线-0.1倍率"
+      - "🇺🇸美国凤凰城专线2-0.1倍率"
+      - "🇺🇸美国凤凰城专线3-0.1倍率"
+
+  - name: CODEX-AMAZON-US
+    type: select
+    proxies:
+      - "🇺🇸美国凤凰城专线-0.1倍率"
+      - "🇺🇸美国2号-0.01倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
+      - "🇺🇸美国4号-0.1倍率"
+
+  - name: CODEX-GAME
+    type: url-test
+    proxies:
+      - "🇯🇵日本专线-0.1倍率"
+      - "🇯🇵日本专线2-0.1倍率"
+      - "🇯🇵日本专线3-0.1倍率"
+      - "🇸🇬新加坡专线"
+      - "🇸🇬新加坡专线2"
+      - "🇸🇬新加坡专线3"
+      - "🇺🇸美国凤凰城专线-0.1倍率"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 80
+
+rules:
+  - DOMAIN-SUFFIX,youtube.com,CODEX-YOUTUBE
+  - DOMAIN-SUFFIX,youtu.be,CODEX-YOUTUBE
+  - DOMAIN-SUFFIX,ytimg.com,CODEX-YOUTUBE
+  - DOMAIN-SUFFIX,googlevideo.com,CODEX-YOUTUBE
+  - DOMAIN-SUFFIX,youtubei.googleapis.com,CODEX-YOUTUBE
+  - DOMAIN-SUFFIX,gemini.google.com,CODEX-AI
+  - DOMAIN-SUFFIX,bard.google.com,CODEX-AI
+  - DOMAIN-SUFFIX,aistudio.google.com,CODEX-AI
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,CODEX-AI
+  - DOMAIN-SUFFIX,gemini.gstatic.com,CODEX-AI
+  - DOMAIN-SUFFIX,chatgpt.com,CODEX-AI
+  - DOMAIN-SUFFIX,chat.openai.com,CODEX-AI
+  - DOMAIN-SUFFIX,openai.com,CODEX-AI
+  - DOMAIN-SUFFIX,oaistatic.com,CODEX-AI
+  - DOMAIN-SUFFIX,oaiusercontent.com,CODEX-AI
+  - DOMAIN-SUFFIX,oaicdn.com,CODEX-AI
+  - DOMAIN-SUFFIX,auth.openai.com,CODEX-AI
+  - DOMAIN-SUFFIX,google.com,CODEX-AI
+  - DOMAIN-SUFFIX,googleapis.com,CODEX-AI
+  - DOMAIN-SUFFIX,gstatic.com,CODEX-AI
+  - DOMAIN-SUFFIX,googleusercontent.com,CODEX-AI
+  - DOMAIN-SUFFIX,maps.google.com,CODEX-AI
+  - DOMAIN-SUFFIX,maps.googleapis.com,CODEX-AI
+  - DOMAIN-SUFFIX,maps.gstatic.com,CODEX-AI
+  - DOMAIN-SUFFIX,hsbc.com.hk,CODEX-FIN-HK
+  - DOMAIN-SUFFIX,hsbc.com.sg,CODEX-FIN-SG
+  - DOMAIN-SUFFIX,us.hsbc.com,CODEX-FIN-US
+  - DOMAIN-SUFFIX,schwab.com,CODEX-FIN-US
+  - DOMAIN-SUFFIX,schwabcdn.com,CODEX-FIN-US
+  - DOMAIN-SUFFIX,thinkorswim.com,CODEX-FIN-US
+  - DOMAIN-SUFFIX,interactivebrokers.com,CODEX-FIN-US
+  - DOMAIN-SUFFIX,ibkr.com,CODEX-FIN-US
+  - DOMAIN-SUFFIX,amazon.com,CODEX-AMAZON-US
+  - DOMAIN-SUFFIX,amazon.ca,CODEX-AMAZON-US
+  - DOMAIN-SUFFIX,amazon.com.mx,CODEX-AMAZON-US
+  - DOMAIN-SUFFIX,sellercentral.amazon.com,CODEX-AMAZON-US
+  - DOMAIN-SUFFIX,amazonservices.com,CODEX-AMAZON-US
+  - DOMAIN-SUFFIX,mobilelegends.com,CODEX-GAME
+  - DOMAIN-SUFFIX,moonton.com,CODEX-GAME
+  - DOMAIN-SUFFIX,moonton.net,CODEX-GAME
+  - DOMAIN-SUFFIX,youngjoygame.com,CODEX-GAME
+  - DOMAIN-SUFFIX,supercell.com,CODEX-GAME
+  - DOMAIN-SUFFIX,supercell.net,CODEX-GAME
+  - DOMAIN-SUFFIX,supercellgames.com,CODEX-GAME
+  - DOMAIN-SUFFIX,clashroyale.com,CODEX-GAME
