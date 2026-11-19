@@ -1,30 +1,32 @@
-name: Codex Routing - 2026.11.18
-desc: Persistent routing for AI, video, finance, Amazon, and mobile games.
+name: Codex Routing - 2026.11.19
+desc: Fixed US AI and Amazon, fixed-region finance, tested web and video routes.
+version: '2026.11.19.1'
 
-proxy-groups:
+# Replace the full group list so subscription defaults cannot add stale candidates.
+proxy-groups: #!replace
   - name: CODEX-AI
     type: select
     proxies:
-      - "🇺🇸美国凤凰城专线-0.1倍率"
-      - "🇺🇸美国4号-0.1倍率"
       - "🇺🇸美国凤凰城专线4-0.1倍率"
-      - "🇺🇸美国ai解锁"
+      - "🇺🇸美国ai-0.1倍率"
+      - "🇺🇸美国ai解锁-0.1倍率"
+      - "🇺🇸美国4号-0.1倍率"
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
 
   - name: CODEX-YOUTUBE
     type: url-test
     proxies:
-      - "🇯🇵日本专线-0.1倍率"
-      - "🇯🇵日本专线2-0.1倍率"
-      - "🇯🇵日本专线3-0.1倍率"
-      - "🇯🇵日本专线4-0.1倍率"
-      - "🇯🇵日本专线5-0.1倍率"
-      - "🇯🇵日本专线6-0.1倍率"
-      - "🇺🇸美国凤凰城专线-0.1倍率"
+      - "🇯🇵日本1号-0.1倍率"
+      - "🇺🇸美国ai-0.1倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
       - "🇺🇸美国凤凰城专线2-0.1倍率"
       - "🇺🇸美国ai解锁-0.1倍率"
     url: https://www.youtube.com/generate_204
-    interval: 300
-    tolerance: 80
+    interval: 180
+    tolerance: 100
+    lazy: true
 
   - name: CODEX-FIN-HK
     type: select
@@ -50,26 +52,79 @@ proxy-groups:
   - name: CODEX-AMAZON-US
     type: select
     proxies:
-      - "🇺🇸美国凤凰城专线-0.1倍率"
-      - "🇺🇸美国2号-0.01倍率"
       - "🇺🇸美国凤凰城专线4-0.1倍率"
       - "🇺🇸美国4号-0.1倍率"
+      - "🇺🇸美国2号-0.01倍率"
+      - "🇺🇸美国ai-0.1倍率"
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
 
   - name: CODEX-GAME
     type: url-test
     proxies:
-      - "🇯🇵日本专线-0.1倍率"
-      - "🇯🇵日本专线2-0.1倍率"
-      - "🇯🇵日本专线3-0.1倍率"
+      - "🇯🇵日本1号-0.1倍率"
+      - "🇯🇵日本6号-0.1倍率"
+      - "🇯🇵日本3号-0.1倍率"
       - "🇸🇬新加坡专线"
-      - "🇸🇬新加坡专线2"
-      - "🇸🇬新加坡专线3"
-      - "🇺🇸美国凤凰城专线-0.1倍率"
-    url: http://www.gstatic.com/generate_204
+      - "🇺🇸美国ai-0.1倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
+    url: https://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+    lazy: true
+
+  - name: 一分机场
+    type: select
+    proxies:
+      - 自动选择
+      - 故障转移
+      - "🇯🇵日本1号-0.1倍率"
+      - "🇯🇵日本6号-0.1倍率"
+      - "🇺🇸美国ai-0.1倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
+      - "🇺🇸美国凤凰城专线2-0.1倍率"
+
+  - name: 自动选择
+    type: url-test
+    proxies:
+      - "🇯🇵日本1号-0.1倍率"
+      - "🇯🇵日本6号-0.1倍率"
+      - "🇺🇸美国ai-0.1倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
+      - "🇺🇸美国凤凰城专线2-0.1倍率"
+    url: https://www.gstatic.com/generate_204
     interval: 300
-    tolerance: 80
+    tolerance: 120
+    lazy: true
+
+  - name: 故障转移
+    type: fallback
+    proxies:
+      - "🇯🇵日本1号-0.1倍率"
+      - "🇺🇸美国ai-0.1倍率"
+      - "🇺🇸美国凤凰城专线4-0.1倍率"
+      - "🇺🇸美国凤凰城专线2-0.1倍率"
+    url: https://www.gstatic.com/generate_204
+    interval: 180
+    lazy: true
+
+http:
+  mitm:
+    - '-youtube.com'
+    - '-*.youtube.com'
+    - '-youtu.be'
+    - '-*.youtu.be'
+    - '-googlevideo.com'
+    - '-*.googlevideo.com'
+    - '-ytimg.com'
+    - '-*.ytimg.com'
+    - '-youtubei.googleapis.com'
+    - '-youtube.googleapis.com'
+    - '-youtubeembeddedplayer.googleapis.com'
 
 rules:
+  # Put video endpoints before the broad Google rules below.
   - DOMAIN-SUFFIX,youtube.com,CODEX-YOUTUBE
   - DOMAIN-SUFFIX,youtu.be,CODEX-YOUTUBE
   - DOMAIN-SUFFIX,ytimg.com,CODEX-YOUTUBE
