@@ -1,6 +1,6 @@
 name: Codex Routing - 2026.11.19
 desc: Fixed US AI and Amazon, fixed-region finance, tested web and video routes.
-version: '2026.11.19.1'
+version: '2026.11.19.2'
 
 # Replace the full group list so subscription defaults cannot add stale candidates.
 proxy-groups: #!replace
@@ -18,7 +18,6 @@ proxy-groups: #!replace
   - name: CODEX-YOUTUBE
     type: url-test
     proxies:
-      - "🇯🇵日本1号-0.1倍率"
       - "🇺🇸美国ai-0.1倍率"
       - "🇺🇸美国凤凰城专线4-0.1倍率"
       - "🇺🇸美国凤凰城专线2-0.1倍率"
@@ -88,8 +87,6 @@ proxy-groups: #!replace
   - name: 自动选择
     type: url-test
     proxies:
-      - "🇯🇵日本1号-0.1倍率"
-      - "🇯🇵日本6号-0.1倍率"
       - "🇺🇸美国ai-0.1倍率"
       - "🇺🇸美国凤凰城专线4-0.1倍率"
       - "🇺🇸美国凤凰城专线2-0.1倍率"
@@ -101,9 +98,8 @@ proxy-groups: #!replace
   - name: 故障转移
     type: fallback
     proxies:
-      - "🇯🇵日本1号-0.1倍率"
-      - "🇺🇸美国ai-0.1倍率"
       - "🇺🇸美国凤凰城专线4-0.1倍率"
+      - "🇺🇸美国ai-0.1倍率"
       - "🇺🇸美国凤凰城专线2-0.1倍率"
     url: https://www.gstatic.com/generate_204
     interval: 180
