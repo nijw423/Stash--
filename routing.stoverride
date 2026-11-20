@@ -1,6 +1,6 @@
-name: Codex Routing - 2026.11.19
+name: Codex Routing - 2026.11.20
 desc: Fixed US AI and Amazon, fixed-region finance, tested web and video routes.
-version: '2026.11.19.2'
+version: '2026.11.20.1'
 
 # Replace the full group list so subscription defaults cannot add stale candidates.
 proxy-groups: #!replace
@@ -76,20 +76,18 @@ proxy-groups: #!replace
   - name: 一分机场
     type: select
     proxies:
-      - 自动选择
       - 故障转移
-      - "🇯🇵日本1号-0.1倍率"
-      - "🇯🇵日本6号-0.1倍率"
+      - 自动选择
       - "🇺🇸美国ai-0.1倍率"
-      - "🇺🇸美国凤凰城专线4-0.1倍率"
-      - "🇺🇸美国凤凰城专线2-0.1倍率"
+      - "🇺🇸美国4号-0.1倍率"
+      - "🇺🇸美国5号-0.1倍率"
 
   - name: 自动选择
     type: url-test
     proxies:
       - "🇺🇸美国ai-0.1倍率"
-      - "🇺🇸美国凤凰城专线4-0.1倍率"
-      - "🇺🇸美国凤凰城专线2-0.1倍率"
+      - "🇺🇸美国4号-0.1倍率"
+      - "🇺🇸美国5号-0.1倍率"
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 120
@@ -98,9 +96,9 @@ proxy-groups: #!replace
   - name: 故障转移
     type: fallback
     proxies:
-      - "🇺🇸美国凤凰城专线4-0.1倍率"
       - "🇺🇸美国ai-0.1倍率"
-      - "🇺🇸美国凤凰城专线2-0.1倍率"
+      - "🇺🇸美国4号-0.1倍率"
+      - "🇺🇸美国5号-0.1倍率"
     url: https://www.gstatic.com/generate_204
     interval: 180
     lazy: true
